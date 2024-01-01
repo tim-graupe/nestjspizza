@@ -7,7 +7,7 @@ import { Pizza } from './pizza.schema';
 @Injectable()
 export class AppService {
   getHello(): string {
-    return 'Hello Deuce!!!';
+    return 'Hello Deuce';
   }
 }
 @Injectable()

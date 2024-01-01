@@ -11,17 +11,14 @@ import { CreatePizzaDto } from './pizza.dto';
 import { Pizza } from './pizza.interface';
 // import { AuthGuard } from '@nestjs/passport';
 import { LocalAuthGuard } from './local-auth-guard';
+import { AuthService } from './auth/auth.service';
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(private authService: AuthService) {}
   @UseGuards(LocalAuthGuard)
   @Post('auth/login')
   async login(@Request() req) {
-    return req.user;
-  }
-  @Get()
-  getHello(): string {
-    return this.appService.getHello();
+    return this.authService.login(req.user);
   }
 }
 
