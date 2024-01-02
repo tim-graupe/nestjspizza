@@ -2,6 +2,7 @@ import * as mongoose from 'mongoose';
 export const UserSchema = new mongoose.Schema(
   {
     username: {
+      //email
       type: String,
       required: true,
       unique: true,
@@ -10,7 +11,11 @@ export const UserSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    displayName: {
+      type: String,
+    },
   },
+
   { timestamps: true },
 );
 
