@@ -1,5 +1,5 @@
 export class CreatePizzaDto {
   name: string;
   style: string;
-  score: number;
+  photo: Express.Multer.File;
 }

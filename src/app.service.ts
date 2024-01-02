@@ -12,9 +12,15 @@ export class AppService {
 }
 @Injectable()
 export class PizzasService {
-  constructor(@InjectModel(Pizza.name) private pizzaModel: Model<Pizza>) {}
-  async create(createPizzaDto: CreatePizzaDto): Promise<Pizza> {
+  constructor(
+    @InjectModel(Pizza.name) private readonly pizzaModel: Model<Pizza>,
+  ) {}
+  async create(
+    createPizzaDto: CreatePizzaDto,
+    photo: Express.Multer.File,
+  ): Promise<Pizza> {
     const createdPizza = new this.pizzaModel(createPizzaDto);
+    createdPizza.photo = photo.path;
     return createdPizza.save();
   }
   async findAll(): Promise<Pizza[]> {
