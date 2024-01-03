@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import { PizzaController } from './app.controller';
-import { PizzasService } from './app.service';
+import { PizzaController } from '../app.controller';
+import { PizzasService } from '../app.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Pizza, PizzaSchema } from './pizza.schema';
 import { MulterModule } from '@nestjs/platform-express';

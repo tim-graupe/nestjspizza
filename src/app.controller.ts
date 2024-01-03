@@ -9,8 +9,8 @@ import {
   UseInterceptors,
 } from '@nestjs/common';
 import { AppService, PizzasService } from './app.service';
-import { CreatePizzaDto } from './pizza.dto';
-import { Pizza } from './pizza.interface';
+import { CreatePizzaDto } from './pizza/pizza.dto';
+import { Pizza } from './pizza/pizza.interface';
 // import { AuthGuard } from '@nestjs/passport';
 import { LocalAuthGuard } from './local-auth-guard';
 import { FileInterceptor } from '@nestjs/platform-express';

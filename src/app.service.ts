@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { CreatePizzaDto } from './pizza.dto';
+import { CreatePizzaDto } from './pizza/pizza.dto';
 import { Model } from 'mongoose';
-import { Pizza } from './pizza.schema';
+import { Pizza } from './pizza/pizza.schema';
 
 @Injectable()
 export class AppService {
