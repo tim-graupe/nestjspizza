@@ -1,18 +1,19 @@
 import {
   Body,
   Controller,
-  Post,
-  Request,
-  UseGuards,
   Get,
+  Post,
+  UseGuards,
+  Request,
 } from '@nestjs/common';
-import { UsersService } from './users.service';
 import * as bcrypt from 'bcrypt';
-import { LocalAuthGuard } from 'src/local-auth-guard';
 import { AuthenticatedGuard } from 'src/auth/authenticated.guard';
+import { LocalAuthGuard } from 'src/auth/local.auth.guard';
+import { UsersService } from './users.service';
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
+
   @Post('/register')
   async addUser(
     @Body('password') userPassword: string,
@@ -27,19 +28,22 @@ export class UsersController {
       userName: result.username,
     };
   }
-  @Post('/login')
+
   @UseGuards(LocalAuthGuard)
+  @Post('/login')
   login(@Request() req): any {
-    return { User: req.user, msg: 'User logged in!' };
+    return { User: req.user, msg: 'User logged in from localauthguard' };
   }
+
   @UseGuards(AuthenticatedGuard)
   @Get('/protected')
-  getHello(@Request() req): string {
-    return req.user;
+  getHello(@Request() req): any {
+    return { test: req.user };
   }
+
   @Get('/logout')
   logout(@Request() req): any {
     req.session.destroy();
-    return { msg: 'User successfully logged out' };
+    return { msg: 'User session ended!' };
   }
 }

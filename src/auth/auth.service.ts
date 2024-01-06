@@ -1,5 +1,5 @@
 import { Injectable, NotAcceptableException } from '@nestjs/common';
-import { UsersService } from '../users/users.service';
+import { UsersService } from 'src/users/users.service';
 import * as bcrypt from 'bcrypt';
 
 @Injectable()
@@ -9,7 +9,7 @@ export class AuthService {
     const user = await this.usersService.getUser(username);
     const passwordValid = await bcrypt.compare(password, user.password);
     if (!user) {
-      throw new NotAcceptableException('User not found!');
+      throw new NotAcceptableException('could not find the user');
     }
     if (user && passwordValid) {
       return {

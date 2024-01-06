@@ -2,20 +2,22 @@ import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { PizzasModule } from './pizza/pizzas.module';
+// import { PizzasModule } from './pizza/pizzas.module';
 import { ConfigModule } from '@nestjs/config';
 import { UsersModule } from './users/users.module';
+import { UsersController } from './users/users.controller';
 import { AuthModule } from './auth/auth.module';
+
 @Module({
   imports: [
-    AuthModule,
-    PizzasModule,
+    // PizzasModule,
     ConfigModule.forRoot(),
     MongooseModule.forRoot(process.env.mongoDB),
     UsersModule,
+    AuthModule,
   ],
-  exports: [PizzasModule],
-  controllers: [AppController],
+  // exports: [PizzasModule],
+  controllers: [AppController, UsersController],
   providers: [AppService],
 })
 export class AppModule {}
