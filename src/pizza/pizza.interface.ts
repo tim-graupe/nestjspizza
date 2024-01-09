@@ -1,4 +1,6 @@
 export interface Pizza {
-  name: string;
+  // user: string;
   style: string;
+  recipe: string;
+  photo: string;
 }

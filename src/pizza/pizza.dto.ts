@@ -1,5 +1,14 @@
+import { IsNotEmpty } from 'class-validator';
+
 export class CreatePizzaDto {
-  name: string;
+  @IsNotEmpty()
+  user: string;
+
+  @IsNotEmpty()
   style: string;
-  photo: Express.Multer.File;
+
+  @IsNotEmpty()
+  recipe: string;
+
+  photo: File | null;
 }

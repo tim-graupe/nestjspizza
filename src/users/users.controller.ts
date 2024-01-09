@@ -7,7 +7,7 @@ import {
   Request,
 } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
-import { AuthenticatedGuard } from 'src/auth/authenticated.guard';
+// import { AuthenticatedGuard } from 'src/auth/authenticated.guard';
 import { LocalAuthGuard } from 'src/auth/local.auth.guard';
 import { UsersService } from './users.service';
 @Controller('users')
@@ -32,13 +32,13 @@ export class UsersController {
   @UseGuards(LocalAuthGuard)
   @Post('/login')
   login(@Request() req): any {
-    return { User: req.user, msg: 'User logged in from localauthguard' };
+    return req.user;
+    // return { User: req.user, msg: 'User logged in from localauthguard' };
   }
 
-  @UseGuards(AuthenticatedGuard)
   @Get('/protected')
   getHello(@Request() req): any {
-    return { test: req.user };
+    return { user: req.User };
   }
 
   @Get('/logout')

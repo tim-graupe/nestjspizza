@@ -1,11 +1,14 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
+// import { User } from 'src/users/users.model';
 export type PizzaDocument = HydratedDocument<Pizza>;
 
 @Schema()
 export class Pizza {
   @Prop()
-  name: string;
+  user: string;
+  @Prop()
+  recipe: string;
   @Prop()
   style: string;
   @Prop()
